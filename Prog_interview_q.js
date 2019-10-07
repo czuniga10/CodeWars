@@ -6,12 +6,9 @@ function findDups(array) {
     const sortedArr = array.sort();
     let result = 0;
     for(var i = 0; i < array.length; i++) {
-        if(sortedArr[i+1] === sortedArr[i]) {
-            result++;
-        }
+        sortedArr[i+1] === sortedArr[i] ? result++ : 0;
     }
-    console.log(result);
-    return result
+    return result;
 }
 
 findDups(arr);
