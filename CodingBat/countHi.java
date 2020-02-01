@@ -6,11 +6,11 @@
 // countHi("hihi") → 2
 
 public int countHi(String str) {
-    int count = 0;
-    for(int i = 0; i < str.length(); i++) {
-      if(str.length() > 1 && str.charAt(i) == 'h' && str.charAt(i+1) == 'i') {
-        count++;
-      }
-    }
-    return count;
+  if(str.length() < 2) {
+    return 0;
+  }
+  if(str.substring(0).startsWith("hi")) {
+    return 1+countHi(str.substring(2));
+  }
+  return countHi(str.substring(1));
 }
