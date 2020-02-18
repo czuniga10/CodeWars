@@ -1,8 +1,9 @@
 var fibCalc = (n) => {
-    if(n <= 1) {
-        return n
+    let foo = n - 1;
+    if(foo <= 1) {
+        return foo
     }
-    return fibCalc(n-1) + fibCalc(n-2)
+    return fibCalc(foo) + fibCalc(foo-1)
 }
 console.log(fibCalc(4))
 
