@@ -1,31 +1,44 @@
 using System;
-namespace pigLatin.cs
+using System.Linq;
+
+namespace PigLatin
 {
-    public class MyClass
+    class Program
     {
-        public MyClass()
+        static void Main(string[] args)
         {
-            Console.WriteLine(otayIgpayAtinlay("happy"));
+            Console.WriteLine(otayIgpayAtinlay("awesome child happy"));
+
         }
 
-        public string otayIgpayAtinlay(string str)
+        private static string otayIgpayAtinlay(string str)
         {
-            var sb = new StringBuilder();
+            var sb = new System.Text.StringBuilder();
             var foo = str.Split(" ");
             for (var i = 0; i < foo.Length; i++)
             {
-                if (!vowelCheck(foo[i]) && vowelCheck(foo[i+1]))
+                if (!VowelCheck(foo[i][0]) && VowelCheck(foo[i][1]))
                 {
-                    sb.append(foo.substring(1,foo.Length)+foo[i]+"ay");
+                    sb.Append(foo[i].Substring(1) + foo[i][0].ToString() + "ay");
                 }
+                else if (!VowelCheck(foo[i][0]) && !VowelCheck(foo[i][1]))
+                {
+                    sb.Append(foo[i].Substring(2) + foo[i][0].ToString() + foo[i][1].ToString() + "ay");
+                }
+                else
+                {
+                    sb.Append(foo[i]+"way");
+                }
+                _ = i != foo.Length ? sb.Append(" ") : sb.Append(".");
             }
+            return sb.ToString();
         }
 
-        public bool vowelCheck(char i)
+        private static bool VowelCheck(char i)
         {
-            i = i.toLowerCase();
-            var vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
-            if (!vowels.Contains(i))
+            i = Char.ToLower(i);
+            char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
+            if (vowels.Contains(i))
             {
                 return true;
             }
