@@ -1,8 +1,4 @@
 /*
-I have submitted a bug ticket for this kata since none of my solutions were working, but had similar/better time complexity than solutions that were accepted...
-
-
-
 Background:
 You're working in a number zoo, and it seems that one of the numbers has gone missing!
 
@@ -38,15 +34,6 @@ function findNumber(array) {
   return result;
 */
 
-/* Too Slow of a solution, but also works
-// return the missing number!
-function findNumber(array) {
-  array = array.sort((a,b) => a-b)
-  var result = array[array.length-1]*(array[array.length-1]+1) / 2 - array.reduce((a,b) => a+b);
-  return result != 0 ? result : array[array.length-1] + 1;
-}
-*/
-
 /* Too slow of a solution, but works
 // return the missing number!
 function findNumber(array) {
@@ -61,3 +48,20 @@ function findNumber(array) {
   return result != 0 ? result : array.length+1;
 }
 */
+
+/* Too Slow of a solution, but also works
+// return the missing number!
+function findNumber(array) {
+  array = array.sort((a,b) => a-b)
+  var result = array[array.length-1]*(array[array.length-1]+1) / 2 - array.reduce((a,b) => a+b);
+  return result != 0 ? result : array[array.length-1] + 1;
+}
+*/
+
+//Final Solution that passed
+//dropped my sort method and used length of arr instead last digit in the sorted array
+
+function findNumber(array) {
+  var result = ((array.length+1) * (array.length+2) / 2) - array.reduce((a,b) => a+b,0);
+  return result != 0 ? result : array.length+2;
+}
