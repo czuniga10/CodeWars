@@ -1,5 +1,3 @@
-//in progress
-
 /*
 Task
 You will receive an array as parameter that contains 1 or more integers and a number n.
