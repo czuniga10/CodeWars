@@ -46,29 +46,22 @@ step 3: [10, 18]
 
 Result: [10, 18]
 */
-
-var arr = [1,2,3,4,5];
-var n = 2;
-
-
 function splitAndAdd(arr, n) {
   var currArr = arr;
-  var half = Math.floor(currArr.length / 2);
   var temp1 = [];
   var temp2 = [];
   var result = [];
   while(n > 0) {
-    temp1 = currArr.splice(0,half);
-    temp2 = currArr.splice(0,currArr.length);
-    console.log(temp1);
-    console.log(temp2);
+    var half = Math.floor(currArr.length / 2);
+    temp1 = currArr.splice(0,half).reverse();
+    temp2 = currArr.splice(0,currArr.length).reverse();
     currArr = [];
-    for (var i = Math.max(temp1.length, temp2.length)-1; i > 0; i--) {
-      currArr.push((temp1[i]) + (temp2[i]));
-      console.log(currArr);
+    for (var i = 0; i < Math.max(temp1.length, temp2.length); i++) {
+      currArr.push((temp1[i] || 0) + (temp2[i] || 0));
     }
+    currArr.reverse();
     n--;
   }
+  result = currArr;
+  return result;
 }
-
-console.log(splitAndAdd(arr,n));
